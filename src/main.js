@@ -1,15 +1,31 @@
+// main.js
 import { createApp } from 'vue'
-import App from './person.vue'
-import ElementPlus from 'element-plus'
-import 'element-plus/theme-chalk/index.css'
-import {store} from "core-js/internals/reflect-metadata";
-import router from "@/router";
+import App from './App.vue'
+import router from './person/router/router'
+import store from '/store/index.js'
+import {
+    components,
+    plugins
+} from './common/element'
 
-createApp(App).mount('#app')
+// 新增代码：引入全部组件及样式
+import 'element-plus/theme-chalk/index.css'
 
 const app = createApp(App)
-app.use(ElementPlus)
-app.mount('#app')
-createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
+components.forEach(component => {
+    app.component(component.name, component)
+})
 
+plugins.forEach(plugin => {
+    app.use(plugin)
+})
+
+app.use(store)
+app.use(router)
+// 新增代码：注册特定组件
+// app.component(ElButton.name, ElButton)
+// 新增代码：注册全部组件
+// app.use(ElementPlus)
+
+app.mount('#app')
 

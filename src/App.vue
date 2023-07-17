@@ -6,10 +6,10 @@
         <td>名字</td>
         <td>性别</td>
       </tr>
-      <tr v-for="person in personEnt" :key="person">
-        <td>{{person.id}}</td>
-        <td>{{person.name}}</td>
-        <td>{{person.sex}}</td>
+      <tr v-for="App in personEnt" :key="App">
+        <td>{{ App.id }}</td>
+        <td>{{ App.name }}</td>
+        <td>{{ App.sex }}</td>
       </tr>
     </table>
   </div>
@@ -23,7 +23,7 @@ import axios from "axios";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "Person",
+  name: "App",
   data(){
     return {
       personEnt:[
