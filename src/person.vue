@@ -15,7 +15,12 @@
   </div>
 </template>
 
+
+
+
 <script>
+import axios from "axios";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Person",
@@ -34,7 +39,14 @@ export default {
         }
       ]
     }
+  },
+  created() {
+    var that=this;
+    axios.get('http://localhost:8081/person/selectAll').then(function (resp) {
+      that.personEnt=resp.data;
+    })
   }
+
 }
 </script>
 
